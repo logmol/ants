@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body style="background-image: url(bg.jpg);">
+	<h1>Очки:<span class="oh"></span></h1>
+	<h1>Жуки:<span class="ju"></span></h1>
+<script type="text/javascript">
+	let juki = 0;
+	let score = 0;
+	let interv= function(){
+		let rand = Math.random()*1100
+		let round = Math.round(rand)
+
+		let ran = Math.random()*700
+		let roun = Math.round(ran)
+
+		let gross = document.createElement("img");
+		document.body.appendChild(gross);
+		gross.src = "img.svg"
+		gross.style.height="100px";
+		gross.style.width="100px";
+		gross.style.marginLeft=round + "px";
+		gross.style.marginTop=roun + "px";
+		gross.style.position="absolute";
+
+		juki=juki+1
+		document.querySelector(".ju").innerHTML=juki
+
+		gross.onclick = function(){
+			gross.style.display="none"
+			score=score+1
+			document.querySelector(".oh").innerHTML=score
+		} 
+	}
+	let check = function(){
+		if (score==juki-1) {
+			alert("You win")
+			clearInterval(time)
+		}else{
+			alert("You lose")
+			clearInterval(time)
+		}
+	}
+	let time=setInterval(interv,1000);
+	setTimeout(check,10100)
+</script>
+</body>
+</html>
